@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu Item index{% endblock %}
+
+{% block body %}
+    <h1>Menu Item index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>Item Section</th>
+                <th>Item Description</th>
+                <th>Item Price</th>
+                <th>Item Image</th>
+                <th>On Menu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for menu_item in menu_items %}
+            <tr>
+                <td>{{ menu_item.id }}</td>
+                <td>{{ menu_item.user.email }}</td>
+                <td>{{ menu_item.menuSection.sectionTitle }}</td>
+                <td>{{ menu_item.itemDescription }}</td>
+                <td>{{ menu_item.itemPrice }}</td>
+                <td>{{ menu_item.itemImage ? menu_item.itemImage : 'No image' }}</td>
+                <td>{{ menu_item.onMenu ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('menu_item_show', {'id': menu_item.id}) }}">show</a>
+                    <a href="{{ path('menu_item_edit', {'id': menu_item.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('menu_item_new') }}">Create new</a>
+{% endblock %}

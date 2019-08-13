@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home
+{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="">
+            <h6>Hello
+                {{ app.user.email }}!
+            </h6>
+        </div>
+    {% endif %}
+    <h1>Welcome to La Cantina Food Truck</h1>
+    <div class='home'></div>
+    <div class="menu">
+        
+    </div>
+{% endblock %}

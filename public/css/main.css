@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+h1  {
+    margin: 0 auto;
+
+}
+
+.home {
+    background-image: url(../Images/truck.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: auto;
+    height: 80vh;
+}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MenuSection{% endblock %}
+
+{% block body %}
+    <h1>Create new MenuSection</h1>
+
+    {{ include('menu_section/_form.html.twig') }}
+
+    <a href="{{ path('menu_section_index') }}">back to list</a>
+{% endblock %}

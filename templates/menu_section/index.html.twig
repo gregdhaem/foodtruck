@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu Section index{% endblock %}
+
+{% block body %}
+    <h1>Menu Section index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>Section Number</th>
+                <th>Section Title</th>
+                <th>Section Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for menu_section in menu_sections %}
+            <tr>
+                <td>{{ menu_section.id }}</td>
+                <td>{{ menu_section.user.email }}</td>
+                <td>{{ menu_section.sectionNumber }}</td>
+                <td>{{ menu_section.sectionTitle }}</td>
+                <td>{{ menu_item.itemImage ? menu_item.itemImage : 'No image' }}</td>
+                <td>
+                    <a href="{{ path('menu_section_show', {'id': menu_section.id}) }}">show</a>
+                    <a href="{{ path('menu_section_edit', {'id': menu_section.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('menu_section_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit MenuSection{% endblock %}
+
+{% block body %}
+    <h1>Edit MenuSection</h1>
+
+    {{ include('menu_section/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('menu_section_index') }}">back to list</a>
+
+    {{ include('menu_section/_delete_form.html.twig') }}
+{% endblock %}

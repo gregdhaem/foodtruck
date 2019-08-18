@@ -15,14 +15,15 @@ h1  {
     background-image: url(../Images/truck.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    /* background-size: contain; */
-    background-size: cover;
+    background-size: contain;
+    /* background-size: cover; */
     width: auto;
-    height: 100vh;
+    height: 80vh;
 }
 
 .menu {
     min-height: 100vh;
+    column-count: 2;
 }
 .menu_section_title, .menu_title {
     text-align: center;
@@ -44,7 +45,19 @@ input[type=text], input[type="password"], input[type="email"], input[type="check
     display: inline-block;
     border: none;
     border-bottom: 1px solid #720707;
-  }
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    margin: 0.5rem 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    border: 1px solid rgb(109, 30, 37);
+}
 
 table {
     width: 80%;

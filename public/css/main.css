@@ -4,14 +4,29 @@
 
 h1  {
     margin: 0 auto;
+}
 
+.main_title {
+    text-align: center;
 }
 
 .home {
     background-image: url(../Images/truck.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    /* background-size: contain; */
+    background-size: cover;
     width: auto;
-    height: 80vh;
+    height: 100vh;
+}
+
+.menu {
+    min-height: 100vh;
+}
+.menu_section_title, .menu_title {
+    text-align: center;
+}
+
+.menu_item_desc {
+    text-align: center;
 }

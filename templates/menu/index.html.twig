@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MenuController!
+{% endblock %}
+
+{% block body %}
+    <div class="menu">
+        <h2 class="menu_title" id="menu">Menu</h2>
+        {% for menu_section in menu_sections|sort %}
+            <h3 class="menu_section_title">{{ menu_section.sectionTitle }}
+            </h3>
+            {% for menu_item in menu_items %}
+                {% if menu_section.id == menu_item.menuSection.id %}
+                    {% if menu_item.OnMenu == 'yes' %}
+
+                        <p class="menu_item_desc">{{ menu_item.itemDescription }}
+                            - &euro;{{ menu_item.itemPrice }}</p>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

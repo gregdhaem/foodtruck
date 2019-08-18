@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Menu Item{% endblock %}
+{% block title %}Menu Item
+{% endblock %}
 
 {% block body %}
     <h1>Menu Item</h1>
@@ -38,9 +39,13 @@
         </tbody>
     </table>
 
-    <a class="btn" href="{{ path('menu_item_index') }}">back to list</a>
+    {# <a class="btn" href="{{ path('menu_item_index') }}">back to list</a> #}
 
-    <a class="btn" href="{{ path('menu_item_edit', {'id': menu_item.id}) }}">edit</a>
+    {% include "menu_item/_back_to_list_form.twig" %}
+
+    <form>
+        <a class="btn" href="{{ path('menu_item_edit', {'id': menu_item.id}) }}">edit</a>
+    </form>
 
     {{ include('menu_item/_delete_form.html.twig') }}
 {% endblock %}

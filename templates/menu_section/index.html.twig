@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Menu Section index{% endblock %}
+{% block title %}Menu Section index
+{% endblock %}
 
 {% block body %}
     <h1>Menu Section index</h1>
@@ -17,25 +18,26 @@
             </tr>
         </thead>
         <tbody>
-        {% for menu_section in menu_sections %}
-            <tr>
-                <td>{{ menu_section.id }}</td>
-                <td>{{ menu_section.user.email }}</td>
-                <td>{{ menu_section.sectionNumber }}</td>
-                <td>{{ menu_section.sectionTitle }}</td>
-                <td>{{ menu_section.sectionImage ? menu_section.sectionImage : 'No image' }}</td>
-                <td>
-                    <a href="{{ path('menu_section_show', {'id': menu_section.id}) }}">show</a>
-                    <a href="{{ path('menu_section_edit', {'id': menu_section.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for menu_section in menu_sections|sortByField("sectionNumber", "asc") %}
+                <tr>
+                    <td>{{ menu_section.id }}</td>
+                    <td>{{ menu_section.user.email }}</td>
+                    <td>{{ menu_section.sectionNumber }}</td>
+                    <td>{{ menu_section.sectionTitle }}</td>
+                    <td>{{ menu_section.sectionImage ? menu_section.sectionImage : 'No image' }}</td>
+                    <td>
+                        <a href="{{ path('menu_section_show', {'id': menu_section.id}) }}">show</a>
+                        <a href="{{ path('menu_section_edit', {'id': menu_section.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn" href="{{ path('menu_section_new') }}">Create new</a>
+    <form>
+        <a class="btn" href="{{ path('menu_section_new') }}">Create new</a>
+    </form>
 {% endblock %}

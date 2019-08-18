@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MenuController!
+{% block title %}Food Menu
 {% endblock %}
 
 {% block body %}
@@ -9,14 +9,23 @@
         {% for menu_section in menu_sections|sortByField('sectionNumber', 'asc') %}
             <h3 class="menu_section_title">{{ menu_section.sectionTitle }}
             </h3>
-            {% for menu_item in menu_items %}
-                {% if menu_section.id == menu_item.menuSection.id %}
-                    {% if menu_item.OnMenu == 'yes' %}
-                        <p class="menu_item_desc">{{ menu_item.itemDescription }}
-                            - &euro;{{ menu_item.itemPrice }}</p>
+            <div class="menu_item_section">
+                {% for menu_item in menu_items %}
+                    {% if menu_section.id == menu_item.menuSection.id %}
+                        {% if menu_item.OnMenu == 'yes' %}
+                            <div class="menu_item_grid">
+                                <div>
+                                    <p class="menu_desc_grid">{{ menu_item.itemDescription }}</p>
+                                </div>
+                                <div>
+                                    <p class="menu_price_grid">&euro;{{ menu_item.itemPrice }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
+            </div>
         {% endfor %}
     </div>
 {% endblock %}
+

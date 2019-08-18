@@ -7,6 +7,10 @@ h1  {
     text-align: center;
 }
 
+nav {
+    margin-bottom: 1rem;
+}
+
 .main_title {
     text-align: center;
 }
@@ -22,11 +26,33 @@ h1  {
 }
 
 .menu {
-    min-height: 100vh;
-    column-count: 2;
+    /* min-height: 100vh; */
+    column-count: 3;
+    column-rule-style: solid;
 }
+
+.menu_item_section {
+    margin-bottom: 1rem;
+}
+
+.menu_item_grid {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.menu_desc_grid {
+    text-align: left;
+    margin: 0 0 0 1rem;
+}
+
+.menu_price_grid {
+    text-align: right;
+    margin: 0 1rem 0 0;
+}
+
 .menu_section_title, .menu_title {
     text-align: center;
+    margin: 0 0 1rem 0;
 }
 
 .menu_item_desc {
@@ -34,7 +60,7 @@ h1  {
 }
 
 form {
-    width: 66%;
+    width: 80%;
     margin: 1rem auto;
 }
 
@@ -49,7 +75,7 @@ input[type=text], input[type="password"], input[type="email"], input[type="check
 
 .btn {
     padding: 0.8rem 2rem;
-    margin: 0.5rem 0;
+    margin: 0.5rem 0 0;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -67,7 +93,7 @@ table {
 
 td, th {
     border: 1px solid #ddd;
-    padding: 0.5rem;
+    padding: 0.25rem;
 }
 
 tr:nth-child(even){
@@ -76,6 +102,10 @@ tr:nth-child(even){
 
 tr:hover {
     background-color: #ddd;
+}
+
+tr.break {
+    background-color: #720707;
 }
 
 th {

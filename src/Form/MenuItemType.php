@@ -16,7 +16,7 @@ class MenuItemType extends AbstractType
             ->add('itemPrice')
             ->add('itemImage')
             ->add('onMenu')
-            ->add('user')
+            // ->add('user')
             ->add('menuSection')
         ;
     }

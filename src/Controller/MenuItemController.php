@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\MenuItem;
 use App\Form\MenuItemType;
 use App\Repository\MenuItemRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\MenuSectionRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/menu/item")
@@ -18,10 +19,11 @@ class MenuItemController extends AbstractController
     /**
      * @Route("/", name="menu_item_index", methods={"GET"})
      */
-    public function index(MenuItemRepository $menuItemRepository): Response
+    public function index(MenuItemRepository $menuItemRepository, MenuSectionRepository $menuSectionRepository): Response
     {
         return $this->render('menu_item/index.html.twig', [
             'menu_items' => $menuItemRepository->findAll(),
+            'menu_sections' => $menuSectionRepository->findAll()
         ]);
     }
 
@@ -30,11 +32,13 @@ class MenuItemController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $user = $this->getUser();
         $menuItem = new MenuItem();
         $form = $this->createForm(MenuItemType::class, $menuItem);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $menuItem->setUser($user);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($menuItem);
             $entityManager->flush();

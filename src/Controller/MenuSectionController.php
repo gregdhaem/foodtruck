@@ -30,11 +30,13 @@ class MenuSectionController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $user = $this->getUser();
         $menuSection = new MenuSection();
         $form = $this->createForm(MenuSectionType::class, $menuSection);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $menuSection->setUser($user);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($menuSection);
             $entityManager->flush();

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Menu Item index{% endblock %}
+{% block title %}Menu Item index
+{% endblock %}
 
 {% block body %}
     <h1>Menu Item index</h1>
@@ -19,27 +20,39 @@
             </tr>
         </thead>
         <tbody>
-        {% for menu_item in menu_items %}
-            <tr>
-                <td>{{ menu_item.id }}</td>
-                <td>{{ menu_item.user.email }}</td>
-                <td>{{ menu_item.menuSection.sectionTitle }}</td>
-                <td>{{ menu_item.itemDescription }}</td>
-                <td>{{ menu_item.itemPrice }}</td>
-                <td>{{ menu_item.itemImage ? menu_item.itemImage : 'No image' }}</td>
-                <td>{{ menu_item.onMenu ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('menu_item_show', {'id': menu_item.id}) }}">show</a>
-                    <a href="{{ path('menu_item_edit', {'id': menu_item.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for menu_section in menu_sections|sortByField('sectionNumber', 'asc') %}
+
+                {% for menu_item in menu_items %}
+                    {% if menu_section.id == menu_item.menuSection.id %}
+                        <tr>
+                            <td>{{ menu_item.id }}</td>
+                            <td>{{ menu_item.user.email }}</td>
+                            <td>{{ menu_item.menuSection.sectionTitle }}</td>
+                            <td>{{ menu_item.itemDescription }}</td>
+                            <td>{{ menu_item.itemPrice }}</td>
+                            <td>{{ menu_item.itemImage ? menu_item.itemImage : 'No image' }}</td>
+                            <td>{{ menu_item.onMenu ? 'Yes' : 'No' }}</td>
+                            <td>
+                                <a href="{{ path('menu_item_show', {'id': menu_item.id}) }}">show</a>
+                                <a href="{{ path('menu_item_edit', {'id': menu_item.id}) }}">edit</a>
+                            </td>
+                        </tr>
+
+                    {% endif %}
+
+                {% else %}
+                    <tr>
+                        <td colspan="8">no records found</td>
+                    </tr>
+                {% endfor %}
+                <tr  class="break">
+                    <td colspan="8"></td>
+                </tr>
+
+            {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn" href="{{ path('menu_item_new') }}">Create new</a>
+    <form>
+        <a class="btn" href="{{ path('menu_item_new') }}">Create new</a>
+    </form>
 {% endblock %}

@@ -15,7 +15,7 @@ class MenuSectionType extends AbstractType
             ->add('sectionNumber')
             ->add('sectionTitle')
             ->add('sectionImage')
-            ->add('user')
+            // ->add('user')
         ;
     }
 

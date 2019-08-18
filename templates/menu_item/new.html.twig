@@ -7,5 +7,6 @@
 
     {{ include('menu_item/_form.html.twig') }}
 
-    <a class="btn" href="{{ path('menu_item_index') }}">back to list</a>
+    {% include "menu_item/_back_to_list_form.twig" %}
+
 {% endblock %}
